@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pageTitle = "Rim Reels Home";
+const pageDescription = "Welcome to Rim Reels, your vibrant hub for epic basketball moments, player insights, and playful sports timelines that celebrate the heart of the game.";
+
+const features = [
+  {
+    icon: "fas fa-drumstick-bite",
+    title: "Epic Highlights",
+    text: "Scroll through our vibrant timeline of legendary dunks, buzzer-beaters, and game-changers—from MJ's iconic flights to modern phenoms like Luka Dončić."
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Deep Dives",
+    text: "Get the scoop on player stats, team strategies, and behind-the-scenes stories that go beyond the box score."
+  },
+  {
+    icon: "fas fa-users",
+    title: "Community Vibes",
+    text: "Join fellow fans to share your takes, vote on the best plays, and relive the glory."
+  }
+];
+
+const timelineEvents = [
+  {
+    year: "1989",
+    title: "Michael Jordan's First Dunk",
+    description: "The legendary flight that changed basketball forever",
+    color: "from-blue-500 to-cyan-400"
+  },
+  {
+    year: "2018",
+    title: "Luka's Elite Draft",
+    description: "The future of basketball emerges with the #1 pick",
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    year: "1998",
+    title: "Final Buzzer Beater",
+    description: "A moment of pure magic that cemented greatness",
+    color: "from-purple-500 to-indigo-500"
+  },
+  {
+    year: "2023",
+    title: "Crossover Revolution",
+    description: "New moves that redefine what's possible on the court",
+    color: "from-green-500 to-teal-400"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <style>
+  {'
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, #0ea5e9, #f97316);
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+      }
+      
+      .timeline-item:nth-child(odd)::before {
+        left: 20%;
+      }
+      
+      .timeline-item:nth-child(even)::before {
+        left: 80%;
+      }
+      
+      .timeline-circle {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #0ea5e9;
+        border: 4px solid white;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+      }
+      
+      .timeline-item:nth-child(odd) .timeline-circle {
+        left: 20%;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-circle {
+        left: 80%;
+      }
+      
+      .animate-pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+      }
+    '}
+</style>
+
+  <!-- Hero Section -->
+  <div class="relative bg-gradient-to-r from-blue-900 via-cyan-800 to-blue-900 py-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmZmYiIC8+CiAgPHBhdGggZD0iTTAgMGgxMHYxMEgweiIgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIwLjEiIC8+Cjwvc3ZnPg==')]"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-4 animate-fade-in">
+            <span class="block">Rim Reels</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-cyan-200 mb-6 animate-fade-in-delay">
+            Dunking into Epic Basketball Moments and Insights
+          </p>
+          <p class="text-lg text-gray-200 max-w-lg animate-fade-in-delay-2">
+            Welcome to your vibrant hub for epic basketball moments, player insights, and playful sports timelines that celebrate the heart of the game.
+          </p>
+          <div class="mt-8 flex space-x-4">
+            <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full transform transition duration-300 hover:scale-105 animate-fade-in-delay-3">
+              Explore Timeline
+            </button>
+            <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-cyan-900 font-bold py-3 px-6 rounded-full transform transition duration-300 hover:scale-105 animate-fade-in-delay-4">
+              Join Community
+            </button>
+          </div>
+        </div>
+        
+        <div class="md:w-1/2 flex justify-center">
+          <div class="relative">
+            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-2xl animate-pulse-slow">
+              <div class="text-6xl text-white">
+                <i class="fas fa-basketball-ball"></i>
+              </div>
+            </div>
+            <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full bg-orange-500 flex items-center justify-center shadow-xl animate-bounce">
+              <div class="text-3xl text-white">
+                <i class="fas fa-dumbbell"></i>
+              </div>
+            </div>
+            <div class="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-cyan-500 flex items-center justify-center shadow-xl animate-bounce" style="animation-delay: 0.5s;">
+              <div class="text-2xl text-white">
+                <i class="fas fa-trophy"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-gradient-to-b from-cyan-50 to-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Rim Reels?</h2>
+        <div class="w-24 h-1 bg-orange-500 mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-10">
+        {features.map((feature, index) => (
+          <div key={index} class="bg-white rounded-xl shadow-lg p-8 transform transition duration-500 hover:scale-105 hover:shadow-xl border border-cyan-100">
+            <div class="w-16 h-16 rounded-full bg-cyan-100 flex items-center justify-center mb-6">
+              <i class={`${feature.icon} text-2xl text-cyan-600`}></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">{feature.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{feature.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-20 bg-gradient-to-b from-white to-cyan-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">Playful Sports Timeline</h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Relive the most epic moments in basketball history with our interactive timeline
+        </p>
+        <div class="w-24 h-1 bg-orange-500 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="relative">
+        {/* Timeline line */}
+        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 to-orange-500 z-0"></div>
+        
+        <div class="space-y-16">
+          {timelineEvents.map((event, index) => (
+            <div key={index} class={`timeline-item relative pb-16 ${index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2'}`}>
+              <div class="timeline-circle"></div>
+              <div class={`bg-white rounded-xl shadow-lg p-6 md:p-8 max-w-lg ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'} border border-cyan-100`}>
+                <div class={`inline-block px-4 py-1 rounded-full text-sm font-bold text-white bg-gradient-to-r ${event.color}`}>
+                  {event.year}
+                </div>
+                <h3 class="text-2xl font-bold text-gray-800 mt-4 mb-2">{event.title}</h3>
+                <p class="text-gray-600">{event.description}</p>
+                <div class="mt-4 flex space-x-2">
+                  <span class="text-xs px-2 py-1 bg-cyan-100 text-cyan-800 rounded-full">Highlight</span>
+                  <span class="text-xs px-2 py-1 bg-orange-100 text-orange-800 rounded-full">Legend</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-gradient-to-r from-cyan-700 to-blue-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold text-white mb-6">Ready to Join the Reel?</h2>
+      <p class="text-xl text-cyan-100 max-w-2xl mx-auto mb-10">
+        Become part of the most vibrant community of basketball enthusiasts. Share your favorite moments, debate the greatest plays, and witness basketball history unfold.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+        <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full text-lg transform transition duration-300 hover:scale-105">
+          Sign Up Now
+        </button>
+        <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-800 font-bold py-4 px-8 rounded-full text-lg transform transition duration-300 hover:scale-105">
+          View Latest Highlights
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-2xl font-bold flex items-center">
+            <i class="fas fa-basketball-ball text-cyan-400 mr-2"></i> Rim Reels
+          </h3>
+          <p class="text-gray-400 mt-2">Celebrating the heartbeat of basketball</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-twitter text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-facebook text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-cyan-400 transition">
+            <i class="fab fa-youtube text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+        <p>&copy; {new Date().getFullYear()} Rim Reels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</Layout>
